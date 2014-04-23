@@ -6,5 +6,5 @@ package optimizeddrawing;
  */
 public interface SpaceMarker
 {
-	public void addRect(int x1, int y1, int x2, int y2);
+    public void addRect(int x1, int y1, int x2, int y2);
 }

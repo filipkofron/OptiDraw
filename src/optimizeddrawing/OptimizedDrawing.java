@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package optimizeddrawing;
 
 /**
@@ -12,13 +6,20 @@ package optimizeddrawing;
  */
 public class OptimizedDrawing
 {
-
 	/**
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args)
 	{
-		// TODO code application logic here
+		TestDrawer testDrawer = new TestDrawer();
+		DirtyMap dirtyMap = new DirtyMap(128, 128);
+		
+		dirtyMap.clear();
+		
+		dirtyMap.addRect(1, 1, 2, 2);
+		dirtyMap.addRect(2, 2, 3, 3);
+		
+		dirtyMap.onSelectDirty(testDrawer);
 	}
 
 }
