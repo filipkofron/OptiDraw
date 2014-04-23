@@ -54,7 +54,7 @@ public class Canvas
 			{
 				for (int y = y1; y < y2; y++)
 				{
-					int pix = image.getRGB(x, y);
+					int pix = Color.TRANSPARENT.getIntArgbPre();
 					for (Drawable object : objects)
 					{
 						pix = object.drawPixel(pix, x, y);
@@ -77,13 +77,6 @@ public class Canvas
 		this.side = nextComplement(Math.max(width, height));
 
 		image = new BufferedImage(side, side, BufferedImage.TYPE_4BYTE_ABGR);
-		for (int x = side / 4; x < side * 3 / 4; x++)
-		{
-			for (int y = side / 4; y < side * 3 / 4; y++)
-			{
-				image.setRGB(x, y, Color.RED.getIntArgbPre());
-			}
-		}
 
 		drawableMap = new DrawableMap(width, height);
 		dirtyMap = new DirtyMap(width, height);

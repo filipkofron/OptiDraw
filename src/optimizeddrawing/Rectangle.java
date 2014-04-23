@@ -46,7 +46,7 @@ public abstract class Rectangle implements Drawable
 
         int e = (int) Math.min(y1, lastY1);
         int f = (int) Math.max(y1, lastY1);
-        int g = (int) Math.min(y2, lastX2);
+        int g = (int) Math.min(y2, lastY2);
         int h = (int) Math.max(y2, lastY2);
 
         spaceMarker.addRect(b, c, e, f);

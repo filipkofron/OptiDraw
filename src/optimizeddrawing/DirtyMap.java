@@ -54,6 +54,8 @@ public class DirtyMap implements SpaceMarker
 	@Override
 	public void addRect(int x1, int y1, int x2, int y2)
 	{
+		System.out.println("dirty: [" + x1 + "," + y1 + "]:[" + x2 + "," + y2 + "]");
+		
 		int sx = (int) (Math.floor(x1 / ptX));
 		int sy = (int) (Math.floor(y1 / ptY));
 		int ex = (int) (Math.ceil(x2 / ptX));
@@ -77,7 +79,8 @@ public class DirtyMap implements SpaceMarker
 		{
 			for (int y = sy; y < ey; y++)
 			{
-				map[(y << 2) + (x >> 5)] |= BITS[x & 0x1F];
+				//map[(y << 2) + (x >> 5)] |= BITS[x & 0x1F];
+				map[(y << 2) + (x >> 5)] = 0xFFFFFFFF;
 			}
 		}
 	}
