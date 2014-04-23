@@ -12,4 +12,6 @@ public interface Drawable
 	public long getZ();
 
 	public int drawPixel(int prev, float x, float y);
+	
+	public void resize(int ax, int ay, int bx, int by);
 }

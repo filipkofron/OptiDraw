@@ -24,6 +24,12 @@ public abstract class Rectangle implements Drawable
 		this.y1 = y1;
 		this.x2 = x2;
 		this.y2 = y2;
+		
+		lastX1 = x1;
+		lastX2 = x1;
+		
+		lastY1 = y1;
+		lastY2 = y1;
 	}
 
 	public Rectangle()
@@ -67,8 +73,28 @@ public abstract class Rectangle implements Drawable
 	}
 
 	@Override
+	public void resize(int ax, int ay, int bx, int by)
+	{
+		lastX1 = x1;
+		lastX2 = x2;
+		lastY1 = y1;
+		lastY2 = y2;
+		
+		x1 = Math.min(ax, bx);
+		x2 = Math.max(ax, bx);
+		y1 = Math.min(ay, by);
+		y2 = Math.max(ay, by);
+	}
+
+	@Override
 	public long getZ()
 	{
 		return z;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Rectangle{" + "z=" + z + ", x1=" + x1 + ", y1=" + y1 + ", x2=" + x2 + ", y2=" + y2 + '}';
 	}
 }
