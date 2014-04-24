@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package optimizeddrawing;
 
 import com.sun.prism.paint.Color;
@@ -31,9 +25,9 @@ public class FilledRectangle extends Rectangle
 		{
 			if(x == x1 || x == x2 || y == y1 || y == y2)
 			{
-				return Color.RED.getIntArgbPre();
+				return (prev | (prev >> 9)) ^ Color.RED.getIntArgbPre();
 			}
-			return Color.GREEN.getIntArgbPre();
+			return (prev | (prev >> 9)) ^ Color.GREEN.getIntArgbPre();
 		}
 		return prev;
 	}

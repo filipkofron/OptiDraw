@@ -6,6 +6,8 @@
 
 package optimizeddrawing;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
@@ -61,6 +63,21 @@ public class DrawableMap
 			}
 		}
 	}
+	
+	public void draw(Graphics g)
+	{
+		for(int x = 0; x < SIDE; x++)
+		{
+			for(int y = 0; y < SIDE; y++)
+			{
+				if(map[x][y].size() > 0)
+				{
+					g.setColor(new Color(128, 0, 255, 150));
+					g.fillRect((int) (x * ptX), (int) (y * ptY), (int) (ptX), (int) (ptY));
+				}
+			}
+		}
+	}	
 
 	public void addDrawable(Drawable drawable, int x1, int y1, int x2, int y2)
 	{

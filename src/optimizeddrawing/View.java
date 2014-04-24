@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  *
  * @author Filip Kofron
  */
-public class View extends JPanel implements ComponentListener, RepaintListener
+public class View extends JPanel implements ComponentListener, RepaintListener, SpaceMarker
 {
 	private Canvas canvas;
 	private ToolBox toolBox;
@@ -56,15 +56,21 @@ public class View extends JPanel implements ComponentListener, RepaintListener
 	{
 	}
 	
+	private Graphics graphics;
+	
 	@Override
 	protected void paintComponent(Graphics g)
 	{
+		graphics = g;
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		if(canvas != null)
 		{
 			g.drawImage(canvas.getImage(), 0, 0, this);
+			//canvas.getDirtyMap().onSelectDirty(this);
+			canvas.getDrawableMap().draw(g);
 		}
+		graphics = null;
 	}
 
 	@Override
@@ -72,5 +78,12 @@ public class View extends JPanel implements ComponentListener, RepaintListener
 	{
 		canvas.draw();
 		repaint();
+	}
+
+	@Override
+	public void addRect(int x1, int y1, int x2, int y2)
+	{
+		graphics.setColor(new Color(100, 100, 100, 100));
+		graphics.fillRect(x1, y1, x2, y2);
 	}
 }

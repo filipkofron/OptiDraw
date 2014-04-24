@@ -75,11 +75,19 @@ public class DirtyMap implements SpaceMarker
 			sy = tmp;
 		}
 
-		for (int x = sx; x < ex; x++)
+		/*for (int x = sx; x < ex; x++)
 		{
 			for (int y = sy; y < ey; y++)
 			{
 				//map[(y << 2) + (x >> 5)] |= BITS[x & 0x1F];
+				map[(y << 2) + (x >> 5)] = 0xFFFFFFFF;
+			}
+		}*/
+		
+		for (int x = 0; x < SIDE; x++)
+		{
+			for (int y = 0; y < SIDE; y++)
+			{
 				map[(y << 2) + (x >> 5)] = 0xFFFFFFFF;
 			}
 		}
